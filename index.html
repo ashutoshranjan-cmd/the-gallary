@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        nav{
+            height: 4rem;
+            width: 100%;
+            border-radius: 20px;
+            background-color: rgb(83, 79, 79);
+            box-shadow: inset 5px 5px 10px black;
+            background-color:rgb(90, 76, 76);
+
+
+        }
+        li{
+            color:white;
+            display: flex;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bolder;
+            padding: 10px;
+
+        }
+        ul{
+            margin-top: 2px;
+        }
+        body{
+            background:linear-gradient(to right, white ,black, grey);
+            background-blend-mode:hard-light;
+            background-position: center;
+            background-size:cover;
+        }
+        .box{
+            display: flex;
+            flex-direction: row;
+        }
+        .container{
+            border: 5px solid white;
+            border-radius: 15px;
+            height: 26rem;
+            width: 61rem;
+            margin-top:8rem;
+            margin-left: 17rem;
+            margin-right: 13rem;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            
+            
+        }
+        img{
+            height: 25rem;
+            width: 60rem;
+            margin: 3px;
+            padding: 2px;
+            border-radius: 10px;
+            
+        }
+        .prev{
+            height: 5rem;
+            width: 5rem;
+            margin-top: 18rem;
+            border: 2px solid black;
+            color: black;
+            font-size: large;
+            font-weight: bolder;
+            cursor: pointer;
+            background-color: aqua;
+            border-radius: 10px;
+            box-shadow: inset 5px 5px 5px black;
+            
+        }
+        .next{
+            height: 5rem;
+            width: 5rem;
+            margin-top: 18rem;
+            border: 2px solid black;
+            color: black;
+            font-size: large;
+            font-weight: bolder;
+            cursor: pointer;
+            background-color: aqua;
+            border-radius: 10px;
+            box-shadow: inset -5px -5px 5px black;
+
+        }
+        button:hover{
+        background-color: rgb(151, 144, 144);
+        }
+    </Style>
+</head>
+<body>
+    <nav>
+        <ul><li>THE GALLARY</li></ul>
+    </nav>
+    <div class="box">
+    <button class="prev" onclick="previous()" >&#10094;</button>
+    <div class="container" id="container">
+        <img id="photo" src="img/image-1.jpg" >
+    </div>
+    <button class="next" onclick="next()" >&#10095;</button>
+</div>
+    </body>
+    <script>
+     var array = new Array();
+
+       array[0] = new Image();
+       array[0].src = 'img/image-1.jpg';
+       array[1] = new Image();
+       array[1].src = 'img/image-2.jpg';
+       array[2] = new Image();
+       array[2].src = 'img/image-3.jpg';
+       array[3] = new Image();
+       array[3].src = 'img/image-4.jpg';
+
+    //    document.getElementById('container').style.backgroundImage = "url('img/image-2.jpg')";
+    var i=0;
+    function imagechange()
+    {
+
+        document.getElementById('photo').src = array[i].src;
+        i++;
+        if(i==3)
+        {
+            i=0;
+        }
+    }
+    function previous(){
+        if(i<0)
+        {
+            i=3;
+        }
+        else{
+        i--;
+        }
+        document.getElementById('photo').src=array[i].src;
+    }
+    function next(){
+        if(i>3)
+        {
+            i=0;
+        }
+        else
+        {
+        i++;
+        }
+        document.getElementById('photo').src = array[i].src;
+    }
+
+    
+    setInterval(imagechange,2500);
+    </script>
+</body>
+</html>
